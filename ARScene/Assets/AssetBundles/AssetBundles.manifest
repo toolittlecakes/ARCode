@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 4099285795
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: content/new_cube1
+      Dependencies: {}
