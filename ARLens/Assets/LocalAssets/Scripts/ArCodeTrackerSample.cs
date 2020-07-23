@@ -2,7 +2,6 @@
 using UnityEngine.Networking;
 using System.Collections.Generic;
 using System.Collections;
-using Newtonsoft.Json;
 
 using maxstAR;
 
@@ -128,41 +127,29 @@ namespace LensAR
             {
                 yield return webRequest.SendWebRequest();
                 AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(webRequest);
-                var loadMapAsset = bundle.LoadAssetAsync("Map.json");
-                var loadScriptsAsset = bundle.LoadAssetAsync("Scripts.bytes");
-                var loadSceneAsset = bundle.LoadAssetAsync("Scene.prefab");
-                yield return loadMapAsset;
-                yield return loadScriptsAsset;
-                yield return loadSceneAsset;
-                bundle.Unload(false);
 
-                TextAsset map = loadMapAsset.allAssets[0] as TextAsset;
-                TextAsset scripts = loadScriptsAsset.allAssets[0] as TextAsset;
-                GameObject scene = loadSceneAsset.allAssets[0] as GameObject;
+                var loadDlls = bundle.LoadAllAssetsAsync<TextAsset>();
+                yield return loadDlls;
 
-                var assembly = System.Reflection.Assembly.Load(scripts.bytes);
-
-                var types = assembly.GetTypes();
-                var Map = JsonConvert.DeserializeObject<Dictionary<string, string>>(map.text);
-               
-                Destroy(sceneInstant);
-                sceneInstant = Instantiate(scene, transform) as GameObject;
-
-                GameObject ARCodePlaceholder = GameObject.Find("ARCodePlaceholder");
-                ARCodePlaceholder.transform.SetParent(transform);
-                sceneInstant.transform.SetParent(ARCodePlaceholder.transform);
-                sceneInstant = ARCodePlaceholder;
-
-
-
-                foreach(var item in Map) 
+                foreach (TextAsset dll in loadDlls.allAssets)
                 {
-                    Debug.Log(assembly.GetTypes()[0]);
-                    Debug.Log(item.Key);
-                    Debug.Log(item.Value);
-                    GameObject obj = GameObject.Find(item.Key);
-                    obj.AddComponent(assembly.GetType(item.Value));
+                    System.Reflection.Assembly.Load(dll.bytes);
                 }
+
+
+                var loadScenes = bundle.LoadAllAssetsAsync<GameObject>();
+                yield return loadScenes;
+
+                foreach (GameObject scene in loadScenes.allAssets)
+                {
+                    var sceneInstant = Instantiate(scene, transform);
+                    Transform ARCodePlaceholder = sceneInstant.transform.Find("ARCodePlaceholder");
+                    ARCodePlaceholder.SetParent(transform);
+                    sceneInstant.transform.SetParent(ARCodePlaceholder.transform);
+                    sceneInstant = ARCodePlaceholder.gameObject;
+                }
+
+
                 cache[code] = Instantiate(sceneInstant);
                 cache[code].SetActive(false);
 
@@ -171,18 +158,7 @@ namespace LensAR
             }
         }
 
-        void SetScene(Object scene)
-        {
-            sceneInstant = Instantiate(scene, transform) as GameObject;
 
-            GameObject ARCodePlaceholder = GameObject.Find("ARCodePlaceholder");
-            ARCodePlaceholder.transform.SetParent(transform);
-
-            sceneInstant.transform.SetParent(ARCodePlaceholder.transform);
-            sceneInstant = ARCodePlaceholder;
-            sceneInstant.SetActive(false);
-
-        }
 
         void OnApplicationPause(bool pause)
         {

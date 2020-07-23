@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3757096373
+CRC: 4073859728
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f326d6c169eee5fb874543d35f84dfb3
+    Hash: 75d868a122a525bec223cad813cd2438
   TypeTreeHash:
     serializedVersion: 2
     Hash: 001a3b66e77fdbaf6be8d769462d058d
@@ -35,6 +35,5 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/ARTools/Example/Prefabs/Scene.prefab
-- Assets/ARTools/Example/Prefabs/Map.json
 - Assets/ARTools/Example/Prefabs/Scripts.bytes
 Dependencies: []
