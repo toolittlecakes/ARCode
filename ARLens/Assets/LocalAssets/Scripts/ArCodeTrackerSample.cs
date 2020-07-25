@@ -127,7 +127,6 @@ namespace LensAR
             {
                 yield return webRequest.SendWebRequest();
                 AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(webRequest);
-
                 var loadDlls = bundle.LoadAllAssetsAsync<TextAsset>();
                 yield return loadDlls;
 
@@ -140,12 +139,14 @@ namespace LensAR
                 var loadScenes = bundle.LoadAllAssetsAsync<GameObject>();
                 yield return loadScenes;
 
-                foreach (GameObject scene in loadScenes.allAssets)
+
+                Destroy(sceneInstant);
+                foreach (GameObject scene in loadScenes.allAssets) // TODO: fix (works only with one)
                 {
-                    var sceneInstant = Instantiate(scene, transform);
+                    sceneInstant = Instantiate(scene, transform);
                     Transform ARCodePlaceholder = sceneInstant.transform.Find("ARCodePlaceholder");
                     ARCodePlaceholder.SetParent(transform);
-                    sceneInstant.transform.SetParent(ARCodePlaceholder.transform);
+                    sceneInstant.transform.SetParent(ARCodePlaceholder);
                     sceneInstant = ARCodePlaceholder.gameObject;
                 }
 

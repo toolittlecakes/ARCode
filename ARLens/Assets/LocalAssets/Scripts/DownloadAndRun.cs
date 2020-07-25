@@ -34,7 +34,10 @@ public class DownloadAndRun : MonoBehaviour
                 ARCodePlaceholder.SetParent(transform);
                 sceneInstant.transform.SetParent(ARCodePlaceholder.transform);
                 sceneInstant = ARCodePlaceholder.gameObject;
+                sceneInstant.transform.Translate(1,1,1);
             }
+
+            
 
         }
     }

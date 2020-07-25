@@ -12,7 +12,7 @@ public class VectorGenerator
 
 public class SinMotion : MonoBehaviour
 {
-    private Transform startTransform;
+    // private Transform startTransform;
     private Vector3 startPosition;
     // Start is called before the first frame update
     void Start()
