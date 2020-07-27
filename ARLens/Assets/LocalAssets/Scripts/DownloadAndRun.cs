@@ -7,7 +7,7 @@ public class DownloadAndRun : MonoBehaviour
 {
 
 
-    private string url = "C:/Users/sne/UnityProjects/ARCode/ARScene/Assets/AssetBundles/content/new_cube1";
+    private string url = "C:/Users/sne/UnityProjects/ARCode/ARScene/Assets/AssetBundles/content/earth";
     IEnumerator Start()
     {
         using (UnityWebRequest webRequest = UnityWebRequestAssetBundle.GetAssetBundle(url))
@@ -32,7 +32,7 @@ public class DownloadAndRun : MonoBehaviour
                 var sceneInstant = Instantiate(scene, transform);
                 Transform ARCodePlaceholder = sceneInstant.transform.Find("ARCodePlaceholder");
                 ARCodePlaceholder.SetParent(transform);
-                sceneInstant.transform.SetParent(ARCodePlaceholder.transform);
+                sceneInstant.transform.SetParent(ARCodePlaceholder);
                 sceneInstant = ARCodePlaceholder.gameObject;
                 sceneInstant.transform.Translate(1,1,1);
             }

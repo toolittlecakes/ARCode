@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 576113928
+CRC: 1056612999
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: content/new_cube1
+      Dependencies: {}
+    Info_1:
+      Name: content/earth
       Dependencies: {}

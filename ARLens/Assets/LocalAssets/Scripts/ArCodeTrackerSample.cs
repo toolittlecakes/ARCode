@@ -38,6 +38,15 @@ namespace LensAR
             // TrackerManager.GetInstance().SetTrackingOption(TrackerManager.TrackingOption.MULTI_TRACKING);
             TrackerManager.GetInstance().StartTracker(TrackerManager.TRACKER_TYPE_QR_TRACKER);
             StartCamera();
+            sceneInstant = Instantiate(WaitScene, transform);
+            Destroy(sceneInstant);
+            sceneInstant = null;
+            StartCoroutine(Warmup());
+
+        }
+        private IEnumerator Warmup()
+        {
+            yield return new WaitForSeconds(0.1f);
         }
 
 
@@ -67,13 +76,12 @@ namespace LensAR
 
         void OnArCodeFound(Trackable marker)
         {
-
             string code = marker.GetName();
 
-            if (!code.ToLower().StartsWith("https://arcode"))
-            {
-                return;
-            }
+            // if (!code.ToLower().StartsWith("https://arcode"))
+            // {
+                // return;
+            // }
 
             if (sceneInstant == null)
             {
@@ -85,14 +93,17 @@ namespace LensAR
                 else
                 {
                     sceneInstant = Instantiate(WaitScene, transform);
-                    StartCoroutine(DownloadScene(code));
+                    // StartCoroutine(DownloadScene(code));
+                    StartCoroutine(GetAssetBundle(code, code));
                 }
             }
 
-            var poseMatrix = marker.GetPose();
             var instantiatedTransfrom = sceneInstant.GetComponent<Transform>();
-            instantiatedTransfrom.position = MatrixUtils.PositionFromMatrix(poseMatrix);
-            instantiatedTransfrom.rotation = MatrixUtils.QuaternionFromMatrix(poseMatrix);
+            var poseMatrix = marker.GetPose();
+            instantiatedTransfrom.position = (MatrixUtils.PositionFromMatrix(poseMatrix) + instantiatedTransfrom.position) / 2;
+            instantiatedTransfrom.rotation = Quaternion.Lerp(MatrixUtils.QuaternionFromMatrix(poseMatrix), 
+            instantiatedTransfrom.rotation, 0.5f);
+
         }
 
 
@@ -116,7 +127,6 @@ namespace LensAR
                 Debug.Log("url: " + realUrl);
 
                 yield return GetAssetBundle(realUrl, code);
-
             }
         }
 
@@ -125,6 +135,7 @@ namespace LensAR
         {
             using (UnityWebRequest webRequest = UnityWebRequestAssetBundle.GetAssetBundle(realUrl))
             {
+                Debug.Log("Getting asset from: "+ realUrl);
                 yield return webRequest.SendWebRequest();
                 AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(webRequest);
                 var loadDlls = bundle.LoadAllAssetsAsync<TextAsset>();
@@ -139,6 +150,7 @@ namespace LensAR
                 var loadScenes = bundle.LoadAllAssetsAsync<GameObject>();
                 yield return loadScenes;
 
+                bundle.Unload(true);
 
                 Destroy(sceneInstant);
                 foreach (GameObject scene in loadScenes.allAssets) // TODO: fix (works only with one)
@@ -154,8 +166,6 @@ namespace LensAR
                 cache[code] = Instantiate(sceneInstant);
                 cache[code].SetActive(false);
 
-                // var cached = Instantiate(sceneInstant);
-                // cached.GetComponent<Renderer>().;
             }
         }
 
