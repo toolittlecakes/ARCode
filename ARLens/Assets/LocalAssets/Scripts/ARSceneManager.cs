@@ -45,9 +45,7 @@ namespace ARLens
                 if (cache.ContainsKey(code))
                 {
                     Debug.Log("get from cache");
-                    var cached = GameObject.Instantiate(cache[code]);
-                    cached.SetActive(true);
-                    sceneHolder = CreateSceneHolder(cached);
+                    sceneHolder = CreateSceneHolder(GameObject.Instantiate(cache[code]));
                 }
                 else
                 {
@@ -88,9 +86,9 @@ namespace ARLens
 
         IEnumerator GetAssetBundle(string realUrl, string code)
         {
+            yield return new WaitForSeconds(1f);
             ARSceneDownloader downloader = ScriptableObject.CreateInstance<ARSceneDownloader>();
             yield return downloader.Download(realUrl);
-            yield return new WaitForSeconds(3f);
 
             GameObject.Destroy(sceneHolder);
 
@@ -99,16 +97,22 @@ namespace ARLens
             sceneHolder = CreateSceneHolder(GameObject.Instantiate(scene));
             
             cache[code] = scene;
-            cache[code].SetActive(false);
+            // cache[code].SetActive(false);
 
             GameObject.Destroy(downloader);
         }
 
         GameObject CreateSceneHolder(GameObject scene, Transform parent = null)
         {
+            scene.SetActive(true);
+            var pose = arCodeTracker.ARCode().GetPose();
             var holder = GameObject.Instantiate(sceneHolderPrefab, parent);
             scene.transform.SetParent(holder.transform);
 
+            holder.transform.SetPositionAndRotation(
+                pose.GetColumn(3),
+                pose.rotation
+            );
             arCodeTracker.ARCodeUpdate.AddListener(holder.GetComponent<ARSceneHolder>().SetPose);
 
             return holder;

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EarthMaterial
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: EarthMaterialCustom
+  m_Shader: {fileID: 4800000, guid: 32a0ef2a7ef59ad47846655a3c02fa8d, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CloudsTex:
-        m_Texture: {fileID: 2800000, guid: 961fa74443856d247867fce623b3d325, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3a653ecb2479be9499f576b1b9e11fce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cube:
@@ -76,11 +76,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NightTex:
-        m_Texture: {fileID: 2800000, guid: 8d73a1f30b7717d4f8f40e2a2128ae7e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3f1a77712fcf216478755538d3b15b9b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapTex:
-        m_Texture: {fileID: 2800000, guid: c2fa05cb71836f246b5eabf3f3c6151c, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7b87fe03b4757a47ae4ceef902ac540, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normals:
@@ -100,7 +100,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularTex:
-        m_Texture: {fileID: 2800000, guid: 5ca5bf05f3cb3b046be353275c0ef45c, type: 3}
+        m_Texture: {fileID: 2800000, guid: e7d66758768926f4e9db85df5c3c1054, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:

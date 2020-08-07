@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2952210612
+CRC: 577002788
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ae4607bf4c4b4ffc8fc7e802bb236fc8
+    Hash: defbd6153d5d017ffa2e560ca112be73
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 001a3b66e77fdbaf6be8d769462d058d
+    Hash: 01ce75431eba03e62ff39b768ff2c198
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -21,19 +21,20 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 43
   Script: {instanceID: 0}
-- Class: 48
-  Script: {instanceID: 0}
 - Class: 49
   Script: {instanceID: 0}
 - Class: 64
   Script: {instanceID: 0}
-- Class: 65
+- Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 9cc14df3dc2020648b1672d9ed3e07c6, type: 3}
+  Script: {fileID: 11500000, guid: 7a70c881415690c418f87514fe62ae5f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b6a3d7cf08b022543afc097128883b86, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 Assets:
-- Assets/ARTools/Example/Prefabs/Scene.prefab
-- Assets/Scripts.bytes
-Dependencies: []
+- Assets/ARTools/EarthExample/SceneTwoPlanet.prefab
+- Assets/EarthScript.bytes
+Dependencies:
+- C:/Users/sne/UnityProjects/ARCode/ARScene/Assets/AssetBundles/content/earth

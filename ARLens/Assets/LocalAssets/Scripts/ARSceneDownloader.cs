@@ -57,6 +57,7 @@ namespace ARLens
                     Destroy(ARCodePlaceholder.gameObject);
 
                     arScene_.transform.SetPositionAndRotation(pos, rot);
+                    arScene_.SetActive(false);
                 }
                 bundle.Unload(false);
             }

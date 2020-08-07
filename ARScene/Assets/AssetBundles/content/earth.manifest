@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 80802864
+CRC: 1823296880
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 587377291da217d888266cccca48f10d
+    Hash: 2694ca1ab5aa61f41f70211b59edeecb
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4c0763f7c5716aa32535d563766f209d
@@ -38,7 +38,8 @@ ClassTypes:
 - Class: 115
   Script: {instanceID: 0}
 Assets:
-- Assets/ARTools/EarthExample/Scene.prefab
-- Assets/ARTools/EarthExample/Materials/EarthMaterial.mat
+- Assets/ARTools/EarthExample/SceneTwoPlanet.prefab
+- Assets/ARTools/EarthExample/Materials/EarthMaterialCustom.mat
+- Assets/ARTools/EarthExample/Materials/EarthMaterialStandart.mat
 - Assets/EarthScript.bytes
 Dependencies: []
