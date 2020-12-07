@@ -3,7 +3,6 @@ using UnityEngine.Networking;
 using System.Collections.Generic;
 using System.Collections;
 
-
 namespace ARLens
 {
 
@@ -12,27 +11,22 @@ namespace ARLens
     public class ARSceneManager : MonoBehaviour
     {
         public GameObject waitScene;
-
         public GameObject sceneHolderPrefab;
 
         private GameObject sceneHolder = null;
-
         private Dictionary<string, GameObject> cache = new Dictionary<string, GameObject>();
-
         private ARCodeTracker arCodeTracker;
 
         void Start()
         {
             arCodeTracker = GameObject.FindObjectOfType<ARCodeTracker>();
-            arCodeTracker.ARCodeFound.AddListener(OnARCodeFound);
-            arCodeTracker.ARCodeLost.AddListener(OnARCodeLost);
+            arCodeTracker.arCodeFound.AddListener(OnARCodeFound);
+            arCodeTracker.arCodeLost.AddListener(OnARCodeLost);
         }
-
-
 
         void OnARCodeFound()
         {
-            var arcode = arCodeTracker.ARCode();
+            var arcode = arCodeTracker.arCode;
             string code = arcode.GetName();
 
             // if (!code.ToLower().StartsWith("https://arcode"))
@@ -50,23 +44,20 @@ namespace ARLens
                 else
                 {
                     sceneHolder = CreateSceneHolder(GameObject.Instantiate(waitScene));
-                    // StartCoroutine(DownloadScene(code));
-                    StartCoroutine(GetAssetBundle(code, code));
+                    StartCoroutine(DownloadScene(code));
+                    // StartCoroutine(GetAssetBundle(code, code));
                 }
             // }
-
-         }
-
+        }
 
         void OnARCodeLost()
         {
             Debug.Log("DELETE HOLDER");
-            // arCodeTracker.ARCodeUpdate.RemoveListener(sceneHolder.SetPose);
+            // arCodeTracker.arCodeUpdate.RemoveListener(sceneHolder.GetComponent<ARSceneHolder>().SetPose);
            
-            GameObject.Destroy(sceneHolder.gameObject);
+            GameObject.Destroy(sceneHolder);
             sceneHolder = null;
         }
-
 
         IEnumerator DownloadScene(string code)
         {
@@ -75,7 +66,6 @@ namespace ARLens
                 yield return webRequest.SendWebRequest();
 
                 string realUrl = webRequest.downloadHandler.text;
-
 
                 Debug.Log("code: " + code);
                 Debug.Log("url: " + realUrl);
@@ -86,26 +76,27 @@ namespace ARLens
 
         IEnumerator GetAssetBundle(string realUrl, string code)
         {
-            yield return new WaitForSeconds(1f);
             ARSceneDownloader downloader = ScriptableObject.CreateInstance<ARSceneDownloader>();
             yield return downloader.Download(realUrl);
 
-            GameObject.Destroy(sceneHolder);
+            if(sceneHolder)
+            {
+                GameObject.Destroy(sceneHolder);
 
-            var scene = downloader.result;
-            
-            sceneHolder = CreateSceneHolder(GameObject.Instantiate(scene));
-            
-            cache[code] = scene;
-            // cache[code].SetActive(false);
-
+                var scene = downloader.result;
+                
+                sceneHolder = CreateSceneHolder(GameObject.Instantiate(scene));
+                
+                // cache[code] = scene;
+                // cache[code].SetActive(false);
+            }
             GameObject.Destroy(downloader);
         }
 
         GameObject CreateSceneHolder(GameObject scene, Transform parent = null)
         {
             scene.SetActive(true);
-            var pose = arCodeTracker.ARCode().GetPose();
+            var pose = arCodeTracker.arCode.GetPose();
             var holder = GameObject.Instantiate(sceneHolderPrefab, parent);
             scene.transform.SetParent(holder.transform);
 
@@ -113,7 +104,7 @@ namespace ARLens
                 pose.GetColumn(3),
                 pose.rotation
             );
-            arCodeTracker.ARCodeUpdate.AddListener(holder.GetComponent<ARSceneHolder>().SetPose);
+            arCodeTracker.arCodeUpdate.AddListener(holder.GetComponent<ARSceneHolder>().SetPose);
 
             return holder;
             

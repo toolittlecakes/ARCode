@@ -28,11 +28,9 @@ namespace ARLens
                     System.Reflection.Assembly.Load(dll.bytes);
                 }
 
-
                 // var loadScenes = bundle.LoadAllAssetsAsync<GameObject>();
                 var loadScenes = bundle.LoadAllAssetsAsync<GameObject>();
                 yield return loadScenes;
-
 
                 foreach (GameObject scene in loadScenes.allAssets) // TODO: fix (works only with one)
                 {
@@ -62,8 +60,6 @@ namespace ARLens
                 bundle.Unload(false);
             }
         }
-
         public GameObject result { get { return arScene_; } }
-
     }
 }

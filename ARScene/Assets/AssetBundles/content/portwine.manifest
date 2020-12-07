@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1741281312
+CRC: 1507802142
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d7dc756b4c160eb908030da19cf8a233
+    Hash: 0a4e174745eb25bb7ae27558978b3f54
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 001a3b66e77fdbaf6be8d769462d058d
+    Hash: f68ac2ff50851b727617ea05f774f765
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -17,23 +17,19 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 23
   Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
 - Class: 33
   Script: {instanceID: 0}
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 49
-  Script: {instanceID: 0}
 - Class: 64
   Script: {instanceID: 0}
-- Class: 65
-  Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9cc14df3dc2020648b1672d9ed3e07c6, type: 3}
-- Class: 115
+- Class: 108
   Script: {instanceID: 0}
 Assets:
-- Assets/ARTools/Example/Prefabs/Scene.prefab
-- Assets/Scripts.bytes
+- Assets/ARTools/Portwine/New Material.mat
+- Assets/ARTools/Portwine/Portwine.prefab
 Dependencies: []

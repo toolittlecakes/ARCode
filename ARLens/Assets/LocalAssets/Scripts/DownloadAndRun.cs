@@ -59,20 +59,7 @@ namespace ARLens
                     lastPosition = scene.transform.position;
 
                 }
-    
-    
-    
             }
-
-
-
-
-
-
-
-
-
-
         }
 
         void ApplyNoise()
