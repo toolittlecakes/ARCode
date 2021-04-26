@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1507802142
+CRC: 3543117336
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0a4e174745eb25bb7ae27558978b3f54
+    Hash: 8d383d9efd41a0157a908913fa4ac5db
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f68ac2ff50851b727617ea05f774f765
+    Hash: 5c0b5d1b49f410e1613ae88cf950af97
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,11 +25,18 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
 - Class: 64
   Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: a7a89cb7606ee2847a70d729946a961b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
 Assets:
-- Assets/ARTools/Portwine/New Material.mat
-- Assets/ARTools/Portwine/Portwine.prefab
+- Assets/Portwine/New Material.mat
+- Assets/Portwine/Portwine.prefab
+- Assets/DllBytes/ARCodeScriptsportwine.bytes
 Dependencies: []

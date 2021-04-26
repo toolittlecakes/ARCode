@@ -1,0 +1,15 @@
+{
+    "name": "EarthScript",
+    "references": [
+        "GUID:15b7dcf7acf63624080ab1cb826d1a26"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

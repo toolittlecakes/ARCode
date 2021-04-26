@@ -1,39 +1,16 @@
 ManifestFileVersion: 0
-CRC: 1741281312
+CRC: 210037347
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d7dc756b4c160eb908030da19cf8a233
+    Hash: 82cad274b3115d4828b6ef31467f0085
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 001a3b66e77fdbaf6be8d769462d058d
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
 HashAppended: 0
 ClassTypes:
-- Class: 1
-  Script: {instanceID: 0}
-- Class: 4
-  Script: {instanceID: 0}
-- Class: 21
-  Script: {instanceID: 0}
-- Class: 23
-  Script: {instanceID: 0}
-- Class: 33
-  Script: {instanceID: 0}
-- Class: 43
-  Script: {instanceID: 0}
-- Class: 48
-  Script: {instanceID: 0}
 - Class: 49
   Script: {instanceID: 0}
-- Class: 64
-  Script: {instanceID: 0}
-- Class: 65
-  Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9cc14df3dc2020648b1672d9ed3e07c6, type: 3}
-- Class: 115
-  Script: {instanceID: 0}
 Assets:
-- Assets/ARTools/Example/Prefabs/Scene.prefab
-- Assets/Scripts.bytes
+- Assets/DllBytes/ARCodeScriptsnew_cube1.bytes
 Dependencies: []

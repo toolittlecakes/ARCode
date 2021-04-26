@@ -4,34 +4,28 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
+using Item = System.Collections.Generic.KeyValuePair<string, string>;
 public class CreateAssetBundles
 {
-
-
     [MenuItem("Assets/Build AssetBundles")]
     static void BuildAllAssetBundles()
     {
-
-        var dllNamesAndLabels = FindAllAsmdefsWithLabels();
-
-        CreateBytesDllAssets(dllNamesAndLabels);
+        var dir = Directory.CreateDirectory("Assets/DllBytes");
+        CreateBytesDllAssets();
 
         BuildPipeline.BuildAssetBundles(
-            "Assets/AssetBundles", 
+            "Assets/AssetBundles",
             // BuildAssetBundleOptions.UncompressedAssetBundle,
             BuildAssetBundleOptions.None,
             BuildTarget.Android
         );
 
-        DeleteBytesDllAssets(dllNamesAndLabels);
-
-
+        Directory.Delete("Assets/DllBytes", true);
     }
 
 
-    static Dictionary<string, string> FindAllAsmdefsWithLabels()
+    static void CreateBytesDllAssets()
     {
-        Dictionary<string, string> asmdefNames = new Dictionary<string, string>();
         var labels = AssetDatabase.GetAllAssetBundleNames();
         foreach (var label in labels)
         {
@@ -40,46 +34,36 @@ public class CreateAssetBundles
             {
                 if (assetPath.EndsWith(".asmdef"))
                 {
-                    asmdefNames.Add(
-                        Path.GetFileNameWithoutExtension(assetPath),
-                        label
-                    );
+                    ImportDllAsBytes(Path.GetFileNameWithoutExtension(assetPath), label);
                 }
+                Debug.Log(Path.GetFileNameWithoutExtension(assetPath));
             }
+            ImportDllAsBytes("ARCodeScripts", label, label.Split('/')[1]);
         }
-        return asmdefNames;
     }
-
-    static void CreateBytesDllAssets(Dictionary<string, string> dllNamesAndLabels)
+    static void ImportDllAsBytes(string name, string label, string suffix = "")
     {
-        foreach (var dllNameAndLabel in dllNamesAndLabels)
-        {
-            var dllName = dllNameAndLabel.Key;
-            var dllLabel = dllNameAndLabel.Value;
 
-            var dllPath = Path.Combine("Library/ScriptAssemblies", Path.ChangeExtension(dllName, "dll"));
-            Debug.Log(dllPath);
-            var dstPath = Path.Combine("Assets", Path.ChangeExtension(dllName, "bytes"));
-            Debug.Log(dstPath);
+        var dllPath = Path.Combine("Library/ScriptAssemblies", Path.ChangeExtension(name, "dll"));
+        Debug.Log(dllPath);
+        
+        var bytesPath = Path.Combine("Assets/DllBytes/", Path.ChangeExtension(name + suffix, "bytes"));
+        Debug.Log(bytesPath);
 
 
-            File.Copy(dllPath, dstPath, true);
-            AssetDatabase.ImportAsset(dstPath, ImportAssetOptions.ImportRecursive);
-            AssetDatabase.SaveAssets();
+        File.Copy(dllPath, bytesPath, true);
+
+        AssetDatabase.ImportAsset(bytesPath, ImportAssetOptions.DontDownloadFromCacheServer);
+        AssetDatabase.SaveAssets();
 
 
-            AssetImporter assetImporter = AssetImporter.GetAtPath(dstPath);
-            assetImporter.assetBundleName = dllLabel;
-            assetImporter.SaveAndReimport();
-        }
+        AssetImporter assetImporter = AssetImporter.GetAtPath(bytesPath);
+        assetImporter.assetBundleName = label;
+        assetImporter.name = name;
+        assetImporter.SaveAndReimport();
+
     }
-    static void DeleteBytesDllAssets(Dictionary<string, string> dllNamesAndLabels)
-    {
-        foreach (var dllName in dllNamesAndLabels.Keys)
-        {
-            AssetDatabase.DeleteAsset(Path.Combine("Assets", Path.ChangeExtension(dllName, "bytes")));
 
-        }
-    }
-   
+
+
 }

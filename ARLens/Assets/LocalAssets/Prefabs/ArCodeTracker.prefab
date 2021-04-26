@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904707ed13a3c014a88e456e3ee96531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitScene: {fileID: 1123630390983836029, guid: dc0d50250b179244ca4beb1995c23586,
+  waitScene: {fileID: 4741966761540579003, guid: c55254e0932038048a19280c2e206f17,
     type: 3}
   sceneHolderPrefab: {fileID: 564048361601114873, guid: b0fb471e2c89f4e42ad7469d62617f1c,
     type: 3}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 7484579032411427256}
   - component: {fileID: 7484579032411427257}
   m_Layer: 0
-  m_Name: ARCodeTracker
+  m_Name: ArCodeTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,14 +14,16 @@ public class WaitDownload : MonoBehaviour
 
     IEnumerator ProgressBar()
     {
-        var chars = new List<string> { "/", "--", "\\", "|" };
-        int i = 0;
-        while (true)
-        {
-            GetComponentInChildren<TextMeshPro>().text = chars[i % 4];
 
-            yield return new WaitForSeconds(0.3f);
-            i++;
-        }
+            yield return new WaitForSeconds(3.0f);
+        // var chars = new List<string> { "/", "--", "\\", "|" };
+        // int i = 0;
+        // while (true)
+        // {
+        //     GetComponentInChildren<TextMeshPro>().text = chars[i % 4];
+
+        //     yield return new WaitForSeconds(0.3f);
+        //     i++;
+        // }
     }
 }

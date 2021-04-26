@@ -1,0 +1,107 @@
+{
+    "m_SelectedDeviceId": "3ed3060c",
+    "m_SelectedPackage": {
+        "deviceId": "3ed3060c",
+        "name": "com.ARCode.ARLens",
+        "processId": 25638,
+        "exited": false
+    },
+    "m_SelectedPriority": 0,
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "998eca2a7d24",
+            "name": "com.ARCode.ARLens",
+            "processId": 30059,
+            "exited": true
+        },
+        {
+            "deviceId": "998eca2a7d24",
+            "name": "com.ARCode.ARLens",
+            "processId": 31372,
+            "exited": true
+        },
+        {
+            "deviceId": "998eca2a7d24",
+            "name": "com.ARCode.ARLens",
+            "processId": 32354,
+            "exited": true
+        },
+        {
+            "deviceId": "998eca2a7d24",
+            "name": "com.ARCode.ARLens",
+            "processId": 1483,
+            "exited": true
+        },
+        {
+            "deviceId": "998eca2a7d24",
+            "name": "com.ARCode.ARLens",
+            "processId": 2934,
+            "exited": true
+        },
+        {
+            "deviceId": "998eca2a7d24",
+            "name": "com.ARCode.ARLens",
+            "processId": 14249,
+            "exited": false
+        },
+        {
+            "deviceId": "3ed3060c",
+            "name": "com.ARCode.ARLens",
+            "processId": 25638,
+            "exited": false
+        }
+    ],
+    "m_Tags": {
+        "m_Entries": [
+            {
+                "m_Name": "Filter by all listed tags",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "No Filter",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Tag Control...",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+            }
+        ]
+    },
+    "m_MemoryViewerState": {
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MemoryGroup": 2,
+        "Behavior": 0
+    },
+    "m_Filter": "",
+    "m_FilterIsRegularExpression": false,
+    "m_SymbolPaths": []
+}

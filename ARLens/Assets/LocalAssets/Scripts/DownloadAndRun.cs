@@ -22,7 +22,7 @@ namespace ARLens
                 yield return new WaitForSeconds(wait);                
             }
             var downloader = ScriptableObject.CreateInstance<ARSceneDownloader>();
-            yield return downloader.Download(url);
+            yield return downloader.Download(new string[1]{url});
 
             scene = downloader.result;
             scene.transform.SetParent(transform);

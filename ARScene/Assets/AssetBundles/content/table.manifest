@@ -1,0 +1,52 @@
+ManifestFileVersion: 0
+CRC: 2726818867
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a340b5fcafcbb4b3c08ac250d6a380e7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fc33c0babb2078992aa0563f26a108f4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: e05113b1fb7116f489ae192ebe9e77a2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a7a89cb7606ee2847a70d729946a961b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/TableExample/TableScene.prefab
+- Assets/DllBytes/ARCodeScriptstable.bytes
+- Assets/DllBytes/TableScripts.bytes
+Dependencies: []

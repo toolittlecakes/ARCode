@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 297322445
+CRC: 1212141031
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f8bf28eb797498da9733c3fad766dda4
+    Hash: 10cb939cb0cfcc9050318bcf4ba3dc71
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4c0763f7c5716aa32535d563766f209d
+    Hash: 57e6f4af8c14d53bbb341640876b7ef7
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -34,12 +34,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 7a70c881415690c418f87514fe62ae5f, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: a7a89cb7606ee2847a70d729946a961b, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: b6a3d7cf08b022543afc097128883b86, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 Assets:
-- Assets/ARTools/EarthExample/Materials/EarthMaterialCustom.mat
-- Assets/ARTools/EarthExample/Materials/EarthMaterialStandart.mat
-- Assets/EarthScript.bytes
-- Assets/ARTools/EarthExample/Earth2.prefab
+- Assets/DllBytes/EarthScript.bytes
+- Assets/EarthExample/Earth2.prefab
+- Assets/DllBytes/ARCodeScriptsearth.bytes
 Dependencies: []

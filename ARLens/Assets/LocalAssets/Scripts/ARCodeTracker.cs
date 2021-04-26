@@ -43,8 +43,8 @@ namespace ARLens
 
         void Start()
         {
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = 60;
+            // QualitySettings.vSyncCount = 0;
+            // Application.targetFrameRate = 60;
             // TrackerManager.GetInstance().SetTrackingOption(TrackerManager.TrackingOption.JITTER_REDUCTION_DEACTIVATION);
             TrackerManager.GetInstance().SetTrackingOption(TrackerManager.TrackingOption.JITTER_REDUCTION_ACTIVATION);
             TrackerManager.GetInstance().StartTracker(TrackerManager.TRACKER_TYPE_QR_TRACKER);
